@@ -3,7 +3,7 @@ const Pool = pg.Pool;
 
 // This configures our pool.  Only need to change db name:
 const config = {
-  database: 'music_library', // change this for each app
+  database: 'music_lib', // change this for each app
   host: 'localhost',
   port: 5432,
   max: 10,
