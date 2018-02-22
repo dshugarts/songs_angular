@@ -19,9 +19,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const song = req.body.song;
-
-  console.log(song);
-  
   let sqlText = `INSERT INTO songs 
   (artist, track, published, rank)
   VALUES ($1, $2, $3, $4)`;
@@ -36,5 +33,18 @@ router.post('/', (req, res) => {
   })
 });
 
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  console.log(`Deleting Song with id=${id}`);
+  let queryText = `DELETE FROM songs WHERE id=$1`;
+  pool.query(queryText, [id])
+  .then((result) => {
+    res.sendStatus(200);
+  })
+  .catch((error) => {
+    console.log('Error on delete', error);
+    res.sendStatus(500);
+  }) 
+});
 
 module.exports = router;

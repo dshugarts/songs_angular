@@ -27,8 +27,6 @@ const songController = app.controller('SongController', ['$http', function($http
     })
   } // end addSong
 
-
-  
   self.getSongs = function(){
     $http({
       method: 'GET',
@@ -40,6 +38,19 @@ const songController = app.controller('SongController', ['$http', function($http
       console.log('Error getting songs', error);
     })
   } //end getSongs
+
+  self.deleteSong = function(song) {
+    $http({
+      method: 'DELETE',
+      url: `/songs/${song.id}`
+    }).then(function(response) {
+      console.log('delete response', response.data);
+      self.getSongs();
+    }).catch(function(error) {
+      console.log('Error on Delete', error);
+    })
+  }
+
 
   self.getSongs();
 }]);

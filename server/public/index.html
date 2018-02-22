@@ -19,7 +19,7 @@
       <input type="text" ng-model="vm.newSong.artist" placeholder="Artist">
       <input type="date" ng-model="vm.newSong.published">
       <input type="number" ng-model="vm.newSong.rank" min=1 max=999>
-      <button ng-click="vm.createSong(newSong)">Add Song</button>
+      <button ng-click="vm.createSong(newSong)" class="btn btn-success">Add Song</button>
     </form>
   </section>
   <section>
@@ -31,14 +31,18 @@
           <th>Track</th>
           <th>Published</th>
           <th>Rank</th>
+          <th>Edit Song</th>
+          <th>Delete Song</th>
         </tr>
       </thead>
       <tbody ng-repeat="song in vm.songsArray">
         <tr>
-          <td>{{song.artist}}</td>
-          <td>{{song.track}}</td>
+          <td><input type="text" value= {{song.artist}} placeholder="Artist"></td>
+          <td><input type="text" value= {{song.track}} placeholder="Track Name"></td>
           <td>{{song.published}}</td>
           <td>{{song.rank}}</td>
+          <td><button ng-click="vm.editSong(song)" class="btn btn-info">Edit Song</button></td>
+          <td><button ng-click="vm.deleteSong(song)" class="btn btn-danger">Delete Song</button></td>
         </tr>
       </tbody>
     </table>
