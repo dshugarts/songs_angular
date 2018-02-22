@@ -37,11 +37,20 @@
       </thead>
       <tbody ng-repeat="song in vm.songsArray">
         <tr>
-          <td><input type="text" value= {{song.artist}} placeholder="Artist"></td>
-          <td><input type="text" value= {{song.track}} placeholder="Track Name"></td>
+          <td>{{song.artist}}</td>
+          <td>{{song.track}}</td>
           <td>{{song.published}}</td>
-          <td>{{song.rank}}</td>
-          <td><button ng-click="vm.editSong(song)" class="btn btn-info">Edit Song</button></td>
+          <td>
+
+          <div ng-hide="song.editing">
+            {{song.rank}}
+          </div>
+          <input ng-show="song.editing" ng-model="song.rank">
+          </td>
+          <td> 
+            <button ng-hide="song.editing" ng-click="vm.editSong(song)" class="btn btn-info">Edit</button>
+            <button ng-show="song.editing" ng-click="vm.saveSong(song)" class="btn btn-success">Save</button>
+          </td>
           <td><button ng-click="vm.deleteSong(song)" class="btn btn-danger">Delete Song</button></td>
         </tr>
       </tbody>

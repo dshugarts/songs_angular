@@ -47,4 +47,19 @@ router.delete('/:id', (req, res) => {
   }) 
 });
 
+router.put('/:id', (req, res) => {
+  const id = req.params.id
+  const song = req.body.song;
+  console.log('Update song', song);
+  let queryText = `UPDATE songs SET rank=$2 WHERE id=$1`;
+  pool.query(queryText, [id, song.rank])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      res.sendStatus(500);
+    })
+});
+
+
 module.exports = router;

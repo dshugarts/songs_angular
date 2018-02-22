@@ -51,6 +51,23 @@ const songController = app.controller('SongController', ['$http', function($http
     })
   }
 
+  self.editSong = function(song){
+    song.editing = true;
+  }
+
+  self.saveSong = function(song){
+    console.log('Updating song', song);
+    $http({
+      method: 'PUT',
+      url: `/songs/${song.id}`,
+      data: { song: song }
+    }).then(function(response){
+      console.log('response', response);
+      self.getSongs();
+    }).catch(function(error){
+      console.log('Error updating song rank', error);
+    })
+  }
 
   self.getSongs();
 }]);
