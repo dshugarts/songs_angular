@@ -10,19 +10,40 @@
   <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
 </head>
 <body>
-  <h1>Songs!</h1>
   <main ng-controller="SongController as vm">
-  <section>
+  </br>
+</br>  
+    <section class="container">
     <h2>Add a song</h2>
-    <form>
-      <input type="text" ng-model="vm.newSong.track" placeholder="Track Name">
-      <input type="text" ng-model="vm.newSong.artist" placeholder="Artist">
-      <input type="date" ng-model="vm.newSong.published">
-      <input type="number" ng-model="vm.newSong.rank" min=1 max=999>
+
+    <form class="col-md-12">
+      <div class="form-group col-md-8">
+      <label for="trackName">Track Name</label>
+      <input type="text" name="trackName" class="form-control" ng-model="vm.newSong.track" placeholder="Track Name"/>
+      </div>
+      <div class="form-group col-md-8">
+      <label for="artistName">Artist Name</label>
+      <input type="text" name="artistName" class="form-control" ng-model="vm.newSong.artist" placeholder="Artist"/>
+      </div>
+      
+      <div class="form-group col-md-8">
+      <label for="published">Publish Date</label>
+      <input type="date" name="published" class="form-control" ng-model="vm.newSong.published"/>
+      </div>
+    
+      <div class="form-group col-md-8">
+      <label for="rank">Song Ranking</label>
+      <input type="number" name="rank" class="form-control" ng-model="vm.newSong.rank" min=1 max=999/>
+      </div>
+    
+      <div class="form-group col-md-6">
       <button ng-click="vm.createSong(newSong)" class="btn btn-success">Add Song</button>
-    </form>
+      </div>
+  </form>
   </section>
-  <section>
+</br>
+</br> 
+  <section class="container">
     <h2>All Songs</h2>
     <table class="table">
       <thead>
